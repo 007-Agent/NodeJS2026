@@ -21,21 +21,38 @@ export async function handleAddUser(req, res) {
   }
 }
 
-export async function handlegetUsers (req, res)  {
-  try {
-    const result = await pool.query('select * from users');
-    // res.status(200).json(result.rows);
-    const arr = [];
-    result.rows.forEach(element => {
-        const res = element.first_name;
-        arr.push(res);     
-    });
-    res.status(200).json({
-      arr
-    });
+// export async function handlegetUsers (req, res)  {
+//   try {
+//     const result = await pool.query('select * from users');
+//     res.status(200).json(result.rows);
+//     console.log(result.rows)
+//     // const arr = [];
+//     // result.rows.forEach(element => {
+//     //     const res = element.first_name;
+//     //     arr.push(res);     
+//     // });
+//     // res.status(200).json({
+//     //   arr
+//     // });
  
+//   } catch (error) {
+//     console.log("ошибка в контроллере!")
+//     console.error("Детали ошибки:", error);
+//     res.status(500).json({ message: 'Ошибка при получении пользователей', error: error.message });
+//   }
+// };
+
+export async function handlegetUsers(req, res) {
+  try {
+    console.log('Начало запроса к БД: получение пользователей');  // Лог перед запросом
+    
+    const result = await pool.query('select * from users');
+    
+    console.log('Запрос выполнен успешно:', result.rows.length, 'записей получено');  // Лог после успешного запроса
+    res.status(200).json(result.rows);
+    
   } catch (error) {
-    console.log("ошибка в контроллере!")
+    console.log("Ошибка в контроллере!");
     console.error("Детали ошибки:", error);
     res.status(500).json({ message: 'Ошибка при получении пользователей', error: error.message });
   }
