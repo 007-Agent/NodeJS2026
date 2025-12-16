@@ -3,11 +3,13 @@ import pool from "../db.js";
 import { someController } from "../models/Test.js";
 export async function handleAddUser(req, res) {
   try {
-    const { name, email, phone } = req.body;
+    // const { name, family, email, phone } = req.body;
+    const [name, family, email, phone] = req.body;
     console.log('Получен запрос на добавление пользователя');
     console.log('req.body:', req.body);
+    console.log('Деструктурированные:', { name, family, email, phone });
     
-    const result = await AddUser(name, email, phone);
+    const result = await AddUser(name, family, email, phone);
     console.log('Тип result:', typeof result);
     console.log(result.success)
     if (result.success) {
