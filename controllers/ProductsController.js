@@ -12,7 +12,7 @@ export async function getProducts (req, res) {
     const baseUrl = 'http://10.16.1.66:3000'; // Замените на ваш URL сервера, если нужно
     const products = result.rows.map(product => ({
       ...product,
-      photo_url: `${baseUrl}/${product.photo_path}`, // Полный URL изображения
+      photo_path: `${baseUrl}/${product.photo_path}`, // Полный URL изображения
     }));
    console.log(products, "PPRPR")
     res.json({ success: true, data: products });
