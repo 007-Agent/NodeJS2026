@@ -7,6 +7,7 @@ import { handleAddUser} from './controllers/UserControllers.js';
 import { handlegetUsers } from './controllers/UserControllers.js';
 import { getProducts } from './controllers/ProductsController.js';
 import { getProductCategory } from './controllers/ProductsController.js';
+import { getAllProperty } from './controllers/ProductsController.js';
 import cors from 'cors';
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
 app.post('/api/products/all', getProductCategory)
+app.post('/api/property/all', getAllProperty)
 const upload = multer({dest : 'uploads/'})
 
 app.get('/test-db', async (req, res) => {
