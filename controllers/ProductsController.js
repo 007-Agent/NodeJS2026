@@ -9,7 +9,7 @@ export async function getProducts (req, res) {
   try {
     const result = await pool.query('SELECT * FROM products');
     console.log(result, "RRRRR")
-    const baseUrl = 'http://10.16.1.156:3000'; // Замените на ваш URL сервера, если нужно
+    const baseUrl = 'http://127.0.0.1:3000'; // Замените на ваш URL сервера, если нужно
     const products = result.rows.map(product => ({
       ...product,
       photo_path: `${baseUrl}/${product.photo_path}`, // Полный URL изображения
