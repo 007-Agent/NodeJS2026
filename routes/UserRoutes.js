@@ -1,5 +1,5 @@
-import { handleAddUser, handlegetUsers } from "../controllers/UserControllers";
-
+import { handleAddUser, handlegetUsers } from "../controllers/UserControllers.js";
+import express from "express";
 const router = express.Router();
 
 
