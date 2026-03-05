@@ -1,12 +1,14 @@
 import express from 'express';
 import ProductRoutes from './ProductRoutes.js'
 import UserRoutes from './UserRoutes.js'
+import LocalUserRoutes from './LocalUserRoutes.js'
 const router = express.Router();
 
 // Подключаем все роуты
 
 router.use('/products', ProductRoutes);
 router.use('/get-all', UserRoutes);
+router.use('/user', LocalUserRoutes)
 
 // Главный маршрут API
 router.get('/', (req, res) => {
@@ -23,6 +25,7 @@ router.get('/', (req, res) => {
         category: 'POST /api/products/category',
         property: 'POST /api/products/property'
       },
+   
       upload: 'POST /api/upload'
     }
   });
