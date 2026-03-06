@@ -49,7 +49,14 @@ export async function loginUser (req, res) {
       { expiresIn: '7d' }
     );
     const { password_hash, ...userWithoutPassword } = user;
+    
     res.json({ user: userWithoutPassword, token });
+//     res.json({ 
+//   data: {
+//     user: userWithoutPassword,
+//     token: token
+//   }
+// });
   } catch (error) {
      console.error('Login error:', error);
     res.status(500).json({ error: 'пользователь не получен!' });
