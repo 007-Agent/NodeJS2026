@@ -61,7 +61,7 @@ export async function getAllProperty (req, res) {
       main_image: `${baseUrl}${product.main_image}`,
       second_image: `${baseUrl}${product.second_image}`,
       third_image: `${baseUrl}${product.four_image}`,
-
+      
       four_image: `${baseUrl}${product.four_image}`,
        // Полный URL изображения
     }));

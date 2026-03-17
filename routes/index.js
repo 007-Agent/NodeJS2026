@@ -2,6 +2,7 @@ import express from 'express';
 import ProductRoutes from './ProductRoutes.js'
 import UserRoutes from './UserRoutes.js'
 import LocalUserRoutes from './LocalUserRoutes.js'
+import OrderRoutes from './OrderRoutes.js'
 const router = express.Router();
 
 // Подключаем все роуты
@@ -9,7 +10,7 @@ const router = express.Router();
 router.use('/products', ProductRoutes);
 router.use('/get-all', UserRoutes);
 router.use('/user', LocalUserRoutes)
-
+router.use('/order', OrderRoutes)
 // Главный маршрут API
 router.get('/', (req, res) => {
   res.json({

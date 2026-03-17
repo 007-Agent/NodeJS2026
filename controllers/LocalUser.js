@@ -51,14 +51,29 @@ export async function loginUser (req, res) {
     const { password_hash, ...userWithoutPassword } = user;
     
     res.json({ user: userWithoutPassword, token });
-//     res.json({ 
-//   data: {
-//     user: userWithoutPassword,
-//     token: token
-//   }
-// });
+
   } catch (error) {
      console.error('Login error:', error);
     res.status(500).json({ error: 'пользователь не получен!' });
   }
 }
+
+export const getUserProfile = async (req, res) => {
+  try {
+    const userId = req.user.userId; // теперь доступно
+
+    const result = await pool.query(
+      'SELECT id, email, name, phone, address, city FROM users WHERE id = $1',
+      [userId]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+
+    res.json({ user: result.rows[0] });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+};
