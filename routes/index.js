@@ -11,6 +11,7 @@ router.use('/products', ProductRoutes);
 router.use('/get-all', UserRoutes);
 router.use('/user', LocalUserRoutes)
 router.use('/order', OrderRoutes)
+
 // Главный маршрут API
 router.get('/', (req, res) => {
   res.json({

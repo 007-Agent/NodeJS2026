@@ -56,6 +56,17 @@ export const createOrder = async (req, res) => {
   }
 };
 
+export const addFavoriteOwner = async(req, res) => {
+  const {id, userId} = req.body;
+   try{
+    const result = await pool.query( `CALL add_like_product($1, $2)`, [id, userId])
+    res.json(result.rows);
+   } catch (error) {
+      console.error('Ошибка добавления в избранное:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+   }
+}
+
 export const getAllOrders = async (req, res) => {
   const userId = req.user.userId; // из middleware authenticateToken
 

@@ -35,7 +35,7 @@ export async function getProductCategory (req, res) {
       }
    const result = await pool.query('SELECT * FROM get_products_by_category_functrue($1)', [categoryId]);
     console.log(result, "RRRRR")
-    const baseUrl = 'http://192.168.254.135:3000'; // Замените на ваш URL сервера, если нужно
+    const baseUrl = 'http://192.168.155.130:3000'; // Замените на ваш URL сервера, если нужно
     // const baseUrl = process.env.BASE_URL || '';
     const products = result.rows.map(product => ({
       ...product,
@@ -54,7 +54,7 @@ export async function getAllProperty (req, res) {
      console.log(req.body)
      const { moment_id, categoryId } = req.body;
      const result = await pool.query('select * from get_products_1212($1, $2)', [moment_id, categoryId])
-      const baseUrl = 'http://192.168.254.135:3000';
+      const baseUrl = 'http://192.168.155.130:3000';
       // const baseUrl = process.env.BASE_URL || '';
       const products = result.rows.map(product => ({
       ...product,
